@@ -1,0 +1,71 @@
+﻿@model TestProjects.WebUI.Models.ProductViewModal
+@{
+    ViewData["Title"] = "GetProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title"><i class="fa fa-plus-circle"></i> Product Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Name</label>
+                                <input asp-for="@Model.product.Name" type="text" class="form-control" id="field-1" placeholder="giriniz" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Is CategoryID</label>
+                                <select class="form-control" id="drpCategroies" asp-for="@Model.product.CategoryId" asp-items="@Model.categories" disabled>
+                                    <option disabled selected value="-1">--Choose---</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Heigth</label>
+                                <input asp-for="@Model.product.Heigth" type="text" class="form-control" id="field-1" placeholder="giriniz" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Weigth</label>
+                                <input asp-for="@Model.product.Weigth" type="text" class="form-control" id="field-1" placeholder="giriniz" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Width</label>
+                                <input asp-for="@Model.product.Width" type="text" class="form-control" id="field-1" placeholder="giriniz" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Explanation</label>
+                                <textarea disabled asp-for="@Model.product.Explanation" type="text" class="form-control autogrow" id="field-1" placeholder="Write something about product" style="overflow:hidden;word-wrap:break-word; resize:horizontal; height:104px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label" >Urun Resim</label>
+                                <ul>
+                                @foreach (var image in Model.ProductImages)
+                                {
+                                    <li><a href="@image.FilePath" download="">@image.FileName</a> </li>
+                                }
+                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-purple waves-effect waves-light">Save changes</button>
+                </div>
+            </div>
+        </form>
